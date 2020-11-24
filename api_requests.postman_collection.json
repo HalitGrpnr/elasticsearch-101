@@ -1,0 +1,1269 @@
+{
+	"info": {
+		"_postman_id": "8af18d95-b018-4f12-9a68-68d0bac289ec",
+		"name": "elasticsearch 101 presentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Index API",
+			"item": [
+				{
+					"name": "Create Index",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/user",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"user"
+							]
+						},
+						"description": "Creates index without body\n\nPUT /index_name"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Index for User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/user",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"user"
+							]
+						},
+						"description": "GET /index_name"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Index",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/movie",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"movie"
+							]
+						},
+						"description": "Creates index without body\n\nPUT /index_name"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Index for Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/movie",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"movie"
+							]
+						},
+						"description": "GET /index_name"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Index With Settings",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"settings\" : {\n        \"index\" : {\n            \"number_of_shards\" : 2,\n            \"number_of_replicas\" : 2\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/category",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"category"
+							]
+						},
+						"description": "Creates index with body\n\nPUT /index_name\n\n{\n    \n    \"settings\": {\n        ......        \n    }\n    \n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Index for Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/category",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"category"
+							]
+						},
+						"description": "GET /index_name"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Index With Manuel Mapping",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mappings\": {\n        \"properties\": {\n            \"name\": {\n                \"type\": \"text\"\n            },\n            \"plate\": {\n                \"type\": \"integer\"\n            },\n            \"location\": {\n                \"type\": \"geo_point\"\n            },\n            \"region\": {\n                \"type\": \"keyword\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/city",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"city"
+							]
+						},
+						"description": "Creates index with body\n\nPUT /index_name\n\n{\n    \n    \"mappings\": {\n        ......        \n    }\n    \n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Index for City",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/city",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"city"
+							]
+						},
+						"description": "GET /index_name"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Multiple Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/category,movie",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"category,movie"
+							]
+						},
+						"description": "GET /index_name_1,index_name_2"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Indices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/_all",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_all"
+							]
+						},
+						"description": "GET /_all"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Index Settings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/category/_settings",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"category",
+								"_settings"
+							]
+						},
+						"description": "GET /index_name/_settings"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Index Mappings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/city/_mappings",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"city",
+								"_mappings"
+							]
+						},
+						"description": "GET /index_name/_mappings"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Index",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/category",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"category"
+							]
+						},
+						"description": "DELETE /index_name"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Multiple Index",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/user,movie",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"user,movie"
+							]
+						},
+						"description": "DELETE /index_name_1,index_name_2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Indices",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/_all",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_all"
+							]
+						},
+						"description": "DELETE /_all"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Document API",
+			"item": [
+				{
+					"name": "Create Document with ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"movie_1\",\n    \"year\": 2017,\n    \"category\": \"comedy\",\n    \"rating\": 7.3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/movie/_doc/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"movie",
+								"_doc",
+								"1"
+							]
+						},
+						"description": "PUT /index_name/document_type/id\n\n{\n\n    Request Body\n\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document for Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/movie/_doc/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"movie",
+								"_doc",
+								"1"
+							]
+						},
+						"description": "GET /index_name/document_type/id"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Document with Auto ID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"user1\",\n    \"age\": 25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/user/_doc",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"user",
+								"_doc"
+							]
+						},
+						"description": "POST index_name/document_type\n\n{\n\n    Request Body\n\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document for User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/user/_doc/<user_id>",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"user",
+								"_doc",
+								"<user_id>"
+							]
+						},
+						"description": "GET /index_name/document_type/id"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document By Spesific Field",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/movie/_doc/1?_source_includes=name,rating",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"movie",
+								"_doc",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_source_includes",
+									"value": "name,rating"
+								}
+							]
+						},
+						"description": "GET /index_name/document_type/id?_source_includes=field_name_1,field_name_2"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"doc\": {\n        \"rating\": 8.4\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/movie/_update/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"movie",
+								"_update",
+								"1"
+							]
+						},
+						"description": "POST /index_name/document_type/id\n\n{\n\n    Request Body\n\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document for Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/movie/_doc/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"movie",
+								"_doc",
+								"1"
+							]
+						},
+						"description": "GET /index_name/document_type/id"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Document",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/movie/_doc/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"movie",
+								"_doc",
+								"1"
+							]
+						},
+						"description": "DELETE /index_name/document_type/id"
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"index\": {\"_id\": \"1\"}}\n{\"name\":\"istanbul\", \"plate\": 34}\n{\"index\": {\"_id\": \"2\"}}\n{\"name\":\"trabzon\", \"plate\": 61}\n{\"index\": {\"_id\": \"3\"}}\n{\"name\":\"bursa\", \"plate\": 16}\n{\"index\": {\"_id\": \"3\"}}\n{\"name\":\"samsun\", \"plate\": 55}\n{\"create\": {\"_id\": \"3\"}}\n{\"name\":\"ankara\", \"plate\": 6}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/city/_bulk",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"city",
+								"_bulk"
+							]
+						},
+						"description": "POST /index_name/_bulk\n\n{\n\n    Request Body\n\n}"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Search API",
+			"item": [
+				{
+					"name": "Search",
+					"item": [
+						{
+							"name": "bulk insert",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"index\":{\"_id\":\"1\"}}\n{\"name\":\"Turkey\",\"capital\":\"Ankara\",\"population\": 83,\"continent\": \"ASIA\",\"flag\": [\"red\",\"white\"] }\n{\"index\":{\"_id\":\"2\"}}\n{\"name\":\"Germany\",\"capital\":\"Berlin\", \"population\": 90,\"continent\": \"EUROPA\",\"flag\": [\"red\",\"yellow\",\"black\"]}\n{\"create\":{\"_id\":\"3\"}}\n{\"name\":\"Italy\",\"capital\":\"Roma\", \"population\": 50,\"continent\": \"EUROPA\",\"flag\": [\"red\",\"white\",\"green\"]}\n{\"index\":{\"_id\":\"5\"}}\n{\"name\":\"United States\",\"capital\":\"Washington\",\"population\": 300,\"continent\": \"AMERICA\",\"flag\": [\"red\",\"white\",\"blue\"]}\n{\"index\":{\"_id\":\"4\"}}\n{\"name\":\"Greece\",\"capital\":\"Atina\", \"population\": 15,\"continent\": \"EUROPA\",\"flag\": [\"blue\",\"white\"]}\n{\"create\":{\"_id\":\"6\"}}\n{\"name\":\"Iran\",\"capital\":\"Tahran\", \"population\": 80,\"continent\": \"ASIA\",\"flag\": [\"red\",\"white\",\"green\"]}\n{\"create\":{\"_id\":\"7\"}}\n{\"name\":\"Mexico\",\"capital\":\"Mexico City\", \"population\": 125,\"continent\": \"AMERICA\",\"flag\": [\"red\",\"white\",\"green\"]}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/country/_bulk",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"country",
+										"_bulk"
+									]
+								},
+								"description": "POST /index_name/_bulk"
+							},
+							"response": []
+						},
+						{
+							"name": "Search All with URI",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9200/country/_search?q=*",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"country",
+										"_search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "*"
+										}
+									]
+								},
+								"description": "GET index_name/_search"
+							},
+							"response": []
+						},
+						{
+							"name": "Search Turkey with URI",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9200/country/_search?q=name:Turkey",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"country",
+										"_search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "name:Turkey"
+										}
+									]
+								},
+								"description": "GET index_name/_search"
+							},
+							"response": []
+						},
+						{
+							"name": "Search All with DSL",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"match_all\": {}\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/country/_search",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"country",
+										"_search"
+									]
+								},
+								"description": "GET index_name/_search\n\n{\n    \n    \"query\": {\n        \"match_all\": {}\n    }\n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Search with match DSL",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"match\": {\n            \"capital\": \"Roma\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/country/_search",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"country",
+										"_search"
+									]
+								},
+								"description": "GET index_name/_search\n\n{\n    \n    \"query\": {\n        \"match\": {}\n    }\n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Search with match DSL - 2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"match\": {\n            \"flag\": \"green\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/country/_search",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"country",
+										"_search"
+									]
+								},
+								"description": "GET index_name/_search\n\n{\n    \n    \"query\": {\n        \"match\": {}\n    }\n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Search with term DSL - fail",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"term\": {\n            \"continent.keyword\": \"europa\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/country/_search",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"country",
+										"_search"
+									]
+								},
+								"description": "GET index_name/_search\n\n{\n    \n    \"query\": {\n        \"term\": {}\n    }\n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Search with term DSL - success",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"term\": {\n            \"continent.keyword\": \"EUROPA\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/country/_search",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"country",
+										"_search"
+									]
+								},
+								"description": "GET index_name/_search\n\n{\n    \n    \"query\": {\n        \"term\": {}\n    }\n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Search with range DSL",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"range\": {\n            \"population\": {\n                \"gte\": 80\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/country/_search",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"country",
+										"_search"
+									]
+								},
+								"description": "GET index_name/_search\n\n{\n    \n    \"query\": {\n        \"range\": {}\n    }\n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Search with bool DSL",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"bool\": {\n            \"must_not\": [\n                {\n                    \"match\": {\n                        \"flag\": \"red\"\n                    }\n                }\n            ]\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/country/_search",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"country",
+										"_search"
+									]
+								},
+								"description": "GET index_name/_search\n\n{\n    \n    \"query\": {\n        \"bool\": {}\n    }\n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Search query_string DSL",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"query\":{\n      \"query_string\":{\n         \"query\":\"25\"\n      }\n   }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9200/_all/_search",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_all",
+										"_search"
+									]
+								},
+								"description": "GET index_name/_search\n\n{\n    \n    \"query\": {\n        \"query_string\": {}\n    }\n}"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Suggester",
+					"item": [
+						{
+							"name": "Create Index",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"settings\": {\n        \"index\": {\n            \"number_of_shards\": 5,\n            \"number_of_replicas\": 1\n        }\n    },\n    \"mappings\": {\n        \"properties\": {\n            \"suggest\": {\n                \"type\": \"completion\"\n            },\n            \"title\": {\n                \"type\": \"keyword\"\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/city",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"city"
+									]
+								},
+								"description": "Creates index with body\n\nPUT /index_name\n\n{\n    \n    Request Body\n    \n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Document 1",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"suggest\" : {\n        \"input\": [ \"16\", \"marmara\" ],\n        \"weight\" : 1\n    },\n    \"title\": \"Bursa\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/city/_doc/1",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"city",
+										"_doc",
+										"1"
+									]
+								},
+								"description": "Creates index with body\n\nPUT /index_name\n\n{\n    \n    Request Body\n    \n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Document 2",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"suggest\" : {\n        \"input\": [ \"34\", \"marmara\" ],\n        \"weight\" : 2\n    },\n    \"title\": \"İstanbul\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/city/_doc/2",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"city",
+										"_doc",
+										"2"
+									]
+								},
+								"description": "Creates index with body\n\nPUT /index_name\n\n{\n    \n    Request Body\n    \n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Document 3",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"suggest\" : {\n        \"input\": [ \"35\", \"ege\" ],\n        \"weight\" : 1\n    },\n    \"title\": \"İzmir\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/city/_doc/3",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"city",
+										"_doc",
+										"3"
+									]
+								},
+								"description": "Creates index with body\n\nPUT /index_name\n\n{\n    \n    Request Body\n    \n}"
+							},
+							"response": []
+						},
+						{
+							"name": "Search",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"suggest\": {\n        \"city-suggest\" : {\n            \"prefix\" : \"Mar\", \n            \"completion\" : { \n                \"field\" : \"suggest\" \n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/city/_search",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"city",
+										"_search"
+									]
+								},
+								"description": "GET index_name/_search\n\n{\n    \n    \"suggest\": {}\n}"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cat API",
+			"item": [
+				{
+					"name": "Indices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/_cat/indices?v",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"indices"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Nodes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/_cat/nodes?v",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"nodes"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Nodes Field",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/_cat/nodes?v&h=ip",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"nodes"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								},
+								{
+									"key": "h",
+									"value": "ip"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Nodes Multiple Fields",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/_cat/nodes?v&h=ip,port",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"nodes"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								},
+								{
+									"key": "h",
+									"value": "ip,port"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/_cat/shards?v",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"shards"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Help",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/_cat/nodes?help",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"nodes"
+							],
+							"query": [
+								{
+									"key": "help",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cluster API",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/_cluster/health",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cluster",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "State",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/_cluster/state",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cluster",
+								"state"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
